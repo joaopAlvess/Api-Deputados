@@ -1,5 +1,5 @@
 import Pagina from '@/components/Pagina'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
@@ -11,23 +11,23 @@ const form = () => {
 
     const { push, query } = useRouter()
     const { register, handleSubmit, setValue } = useForm()
-    
+
     useEffect(() => {
-        if(query.id){
+        if (query.id) {
             const id = query.id
-            const cursos = JSON.parse(window.localStorage.getItem('cursos'))
+            const cursos = JSON.parse(localStorage.getItem('cursos'))
             const curso = cursos[id]
 
-            for(let atributo in curso){
+            for (let atributo in curso) {
                 setValue(atributo, curso[atributo])
             }
         }
     }, [query.id])
 
     function salvar(dados) {
-        const cursos = JSON.parse(window.localStorage.getItem('cursos')) || []
+        const cursos = JSON.parse(localStorage.getItem('cursos')) || []
         cursos.splice(query.id, 1, dados)
-        window.localStorage.setItem('cursos', JSON.stringify(cursos))
+        localStorage.setItem('cursos', JSON.stringify(cursos))
         push('/cursos')
     }
 
@@ -65,4 +65,3 @@ const form = () => {
 }
 
 export default form
-

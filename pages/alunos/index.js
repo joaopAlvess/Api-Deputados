@@ -7,29 +7,29 @@ import { BsFillTrash3Fill, BsPencilFill } from 'react-icons/bs'
 
 const index = () => {
 
-    const [Disciplinas, setDisciplinas] = useState([])
+    const [alunos, setAlunos] = useState([])
 
     useEffect(() => {
-        setDisciplinas(getAll())
+        setAlunos(getAll())
     }, [])
 
     function getAll() {
-        return JSON.parse(window.localStorage.getItem('disciplinas')) || []
+        return JSON.parse(localStorage.getItem('alunos')) || []
     }
 
     function excluir(id) {
         if (confirm('Deseja realmente excluir o registro?')) {
             const itens = getAll()
             itens.splice(id, 1)
-            window.localStorage.setItem('disciplinas', JSON.stringify(itens))
-            setDisciplinas(itens)
+            localStorage.setItem('alunos', JSON.stringify(itens))
+            setAlunos(itens)
         }
     }
 
     return (
-        <Pagina titulo="Disciplinas">
+        <Pagina titulo="Alunos">
 
-            <Link href="/disciplinas/form" className='mb-2 btn btn-primary'>
+            <Link href="/alunos/form" className='mb-2 btn btn-primary'>
                 Novo
             </Link>
 
@@ -38,23 +38,37 @@ const index = () => {
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
-                        <th>Curso</th>
-                       
+                        <th>CPF</th>
+                        <th>Matrícula</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>CEP</th>
+                        <th>Logradouro</th>
+                        <th>Complemento</th>
+                        <th>Número</th>
+                        <th>Bairro</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {Disciplinas.map((item, i) => (
+                    {alunos.map((item, i) => (
                         <tr key={i}>
                             <td>
-                                <Link href={'/disciplinas/' + i}>
+                                <Link href={'/alunos/' + i}>
                                     <BsPencilFill title="Alterar" className='text-primary' />
                                 </Link>
                                 {' '}
                                 <BsFillTrash3Fill title="Excluir" onClick={() => excluir(i)} className='text-danger' />
                             </td>
                             <td>{item.nome}</td>
-                            <td>{item.curso}</td>
-                            
+                            <td>{item.cpf}</td>
+                            <td>{item.matricula}</td>
+                            <td>{item.email}</td>
+                            <td>{item.telefone}</td>
+                            <td>{item.cep}</td>
+                            <td>{item.logradouro}</td>
+                            <td>{item.complemento}</td>
+                            <td>{item.numero}</td>
+                            <td>{item.bairro}</td>
                         </tr>
                     ))}
                 </tbody>

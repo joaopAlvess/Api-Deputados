@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { BsCheckLg } from 'react-icons/bs'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
-import axios from 'axios'
 
 const form = () => {
 
@@ -14,12 +13,14 @@ const form = () => {
     const { register, handleSubmit } = useForm()
 
     function salvar(dados) {
-        axios.post('/api/disciplinas', dados)
+        const disciplinas = JSON.parse(window.localStorage.getItem('disciplinas')) || []
+        disciplinas.push(dados)
+        window.localStorage.setItem('disciplinas', JSON.stringify(disciplinas))
         push('/disciplinas')
     }
 
     return (
-        <Pagina titulo="Disciplina">
+        <Pagina titulo="Disciplinas">
             <Form>
                 <Form.Group className="mb-3" controlId="nome">
                     <Form.Label>Nome: </Form.Label>
@@ -30,13 +31,12 @@ const form = () => {
                     <Form.Label>Curso: </Form.Label>
                     <Form.Control type="text" {...register('curso')} />
                 </Form.Group>
-
                 <div className='text-center'>
                     <Button variant="success" onClick={handleSubmit(salvar)}>
                         <BsCheckLg className="me-2" />
                         Salvar
                     </Button>
-                    <Link className="ms-2 btn btn-danger" href="/disciplinas">
+                    <Link className="ms-2 btn btn-danger" href="/cursos">
                         <AiOutlineArrowLeft className="me-2" />
                         Voltar
                     </Link>

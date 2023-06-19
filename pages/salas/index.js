@@ -7,29 +7,29 @@ import { BsFillTrash3Fill, BsPencilFill } from 'react-icons/bs'
 
 const index = () => {
 
-    const [Disciplinas, setDisciplinas] = useState([])
+    const [salas, setSalas] = useState([])
 
     useEffect(() => {
-        setDisciplinas(getAll())
+        setSalas(getAll())
     }, [])
 
     function getAll() {
-        return JSON.parse(window.localStorage.getItem('disciplinas')) || []
+        return JSON.parse(localStorage.getItem('salas')) || []
     }
 
     function excluir(id) {
         if (confirm('Deseja realmente excluir o registro?')) {
             const itens = getAll()
             itens.splice(id, 1)
-            window.localStorage.setItem('disciplinas', JSON.stringify(itens))
-            setDisciplinas(itens)
+            localStorage.setItem('salas', JSON.stringify(itens))
+            setSalas(itens)
         }
     }
 
     return (
-        <Pagina titulo="Disciplinas">
+        <Pagina titulo="salas">
 
-            <Link href="/disciplinas/form" className='mb-2 btn btn-primary'>
+            <Link href="/profesores/form" className='mb-2 btn btn-primary'>
                 Novo
             </Link>
 
@@ -38,23 +38,23 @@ const index = () => {
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
-                        <th>Curso</th>
-                       
+                        <th>Capacidade</th>
+                        <th>Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {Disciplinas.map((item, i) => (
+                    {salas.map((item, i) => (
                         <tr key={i}>
                             <td>
-                                <Link href={'/disciplinas/' + i}>
+                                <Link href={'/salas/' + i}>
                                     <BsPencilFill title="Alterar" className='text-primary' />
                                 </Link>
                                 {' '}
                                 <BsFillTrash3Fill title="Excluir" onClick={() => excluir(i)} className='text-danger' />
                             </td>
                             <td>{item.nome}</td>
-                            <td>{item.curso}</td>
-                            
+                            <td>{item.Capacidade}</td>
+                            <td>{item.Tipo}</td>
                         </tr>
                     ))}
                 </tbody>

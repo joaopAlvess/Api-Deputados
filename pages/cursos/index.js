@@ -14,14 +14,14 @@ const index = () => {
     }, [])
 
     function getAll() {
-        return JSON.parse(window.localStorage.getItem('cursos')) || []
+        return JSON.parse(localStorage.getItem('cursos')) || []
     }
 
     function excluir(id) {
         if (confirm('Deseja realmente excluir o registro?')) {
             const itens = getAll()
             itens.splice(id, 1)
-            window.localStorage.setItem('cursos', JSON.stringify(itens))
+            localStorage.setItem('cursos', JSON.stringify(itens))
             setCursos(itens)
         }
     }

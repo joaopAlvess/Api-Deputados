@@ -13,28 +13,28 @@ const form = () => {
     const { register, handleSubmit } = useForm()
 
     function salvar(dados) {
-        const cursos = JSON.parse(localStorage.getItem('cursos')) || []
-        cursos.push(dados)
-        localStorage.setItem('cursos', JSON.stringify(cursos))
-        push('/cursos')
+        const semestres = JSON.parse(window.localStorage.getItem('semestres')) || []
+        semestres.push(dados)
+        window.localStorage.setItem('semestres', JSON.stringify(semestres))
+        push('/semestres')
     }
 
     return (
-        <Pagina titulo="Curso">
+        <Pagina titulo="Semestres">
             <Form>
                 <Form.Group className="mb-3" controlId="nome">
                     <Form.Label>Nome: </Form.Label>
                     <Form.Control type="text" {...register('nome')} />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="duracao">
-                    <Form.Label>Duração: </Form.Label>
-                    <Form.Control type="text" {...register('duracao')} />
+                <Form.Group className="mb-3" controlId="data_inicio">
+                    <Form.Label>Data do inicio: </Form.Label>
+                    <Form.Control type="text" {...register('data_inicio')} />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="modalidade">
-                    <Form.Label>Modalidade: </Form.Label>
-                    <Form.Control type="text" {...register('modalidade')} />
+                <Form.Group className="mb-3" controlId="data_fim">
+                    <Form.Label>Data do termino: </Form.Label>
+                    <Form.Control type="text" {...register('data_fim')} />
                 </Form.Group>
 
                 <div className='text-center'>

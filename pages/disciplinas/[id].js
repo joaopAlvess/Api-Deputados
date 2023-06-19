@@ -6,27 +6,28 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { BsCheckLg } from 'react-icons/bs'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
-import axios from 'axios'
 
 const form = () => {
 
     const { push, query } = useRouter()
     const { register, handleSubmit, setValue } = useForm()
-
+    
     useEffect(() => {
-        if (query.id) {
-            axios.get('/api/disciplinas/' + query.id).then(resultado => {
-                const disciplina = resultado.data
+        if(query.id){
+            const id = query.id
+            const disciplinas = JSON.parse(window.localStorage.getItem('disciplinas'))
+            const disciplina = disciplinas[id]
 
-                for(let atributo in disciplina){
-                    setValue(atributo, disciplina[atributo])
-                }
-            })
+            for(let atributo in disciplina){
+                setValue(atributo, disciplina[atributo])
+            }
         }
     }, [query.id])
 
     function salvar(dados) {
-        axios.put('/api/disciplinas/' + query.id, dados)
+        const disciplinas = JSON.parse(window.localStorage.getItem('disciplinas')) || []
+        disciplinas.splice(query.id, 1, dados)
+        window.localStorage.setItem('disciplinas', JSON.stringify(disciplinas))
         push('/disciplinas')
     }
 
@@ -48,7 +49,7 @@ const form = () => {
                         <BsCheckLg className="me-2" />
                         Salvar
                     </Button>
-                    <Link className="ms-2 btn btn-danger" href="/disciplinas">
+                    <Link className="ms-2 btn btn-danger" href="/dsiciplinas">
                         <AiOutlineArrowLeft className="me-2" />
                         Voltar
                     </Link>
@@ -59,4 +60,3 @@ const form = () => {
 }
 
 export default form
-
