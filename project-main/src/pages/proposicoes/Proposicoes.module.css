@@ -1,0 +1,26 @@
+.proposicoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+    flex-wrap: wrap;
+    padding: 40px 60px;
+    width: 100%;
+}
+
+.proposicoes .card {
+    overflow-x: auto;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: aliceblue;
+    min-width: 300px;
+    max-width: 300px;
+    height: 200px;
+    flex-grow: 1;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.231);
+    padding: 10px;
+    color: black;
+}

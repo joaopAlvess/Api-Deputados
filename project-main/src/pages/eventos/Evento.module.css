@@ -1,0 +1,58 @@
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding: 40px;
+    width: 100%;
+}
+
+.card {
+    width: 100%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.231);
+}
+
+.card_body {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.table_content{
+    overflow-x: hidden;
+}
+.table {
+    width: 100%;
+}
+
+.table th,
+.table td {
+    width: 180px;
+}
+
+.card_text {
+    overflow-x: hidden;
+    height: 100px;
+    max-width: 400px;
+}
+.filtros {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 60px;
+    background-color: #0D5A36;
+}
+.filtros select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+}
+.filtros .filtarDados {
+    width: 200px;
+}

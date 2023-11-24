@@ -1,0 +1,9 @@
+package med.foxmed.api.domain.endereco.medico;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MedicoRepository extends JpaRepository<Medico, Long> {
+    Page<Medico> findByAtivoTrue(Pageable paginacao);
+}

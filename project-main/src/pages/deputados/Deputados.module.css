@@ -1,0 +1,109 @@
+.deputados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+    flex-wrap: wrap;
+    padding: 40px 60px;
+    width: 100%;
+}
+
+.deputados .deputado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: aliceblue;
+    height: 300px;
+    width: 100%;
+    flex-grow: 1;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.231);
+    padding: 10px;
+    color: black;
+    overflow: hidden;
+}
+
+.filtros{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 60px;
+    background-color: #0D5A36;
+}
+.filtros .filtarDados{
+    width: 200px;
+}
+
+.deputado table {
+    height: 100px;
+    width: 80%;
+}
+
+.deputado img {
+    width: 200px;
+    height: 230px;
+    border-radius: 100px;
+    border: 1px solid #5f5f5f5b;
+}
+
+.describe tr:nth-child(1) td {
+    background-color: #E1DEDE;
+    font-weight: 600;
+}
+
+.describe td {
+    padding: 10px;
+    width: 400px;
+    border: 1px solid #555050a0;
+}
+
+@media (max-width:1200px) {
+    .deputados .deputado {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: start;
+        background-color: aliceblue;
+        height: 400px;
+    }
+
+    .deputado img {
+        margin: auto;
+    }
+
+    .describe {
+        width: 600px;
+        margin: auto;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .describe tr {
+        width: 600px;
+    }
+
+    .describe td {
+        min-width: 300px;
+        overflow-y: auto;
+    }
+
+    .deputado table {
+        min-width: 600px;
+        margin: auto;
+        overflow-y: scroll;
+    }
+}
+
+@media (max-width:800px) {
+    .describe {
+        width: 300px;
+    }
+
+    .deputado table {
+        min-width: 300px;
+    }
+}
